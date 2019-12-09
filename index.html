@@ -5,10 +5,11 @@
     <link rel="stylesheet" href ="webdb.css">
     </head>
     <body>
+        <div class="main">
         <div class="row">
             <div class="col-md-4">
                  <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="https://cdn.pixabay.com/photo/2016/10/16/10/11/bullion-1744773_960_720.jpg" alt="Gold image">
+                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/10/16/10/11/bullion-1744773_960_720.jpg" alt="Gold image">
                 <div class="card-body">
                     <p class="card-text">La monnaie des dieux. Apprécié depuis l'aube de l'humanité, il aura toujours de la valeur après le déclin de celle-ci.</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -23,24 +24,46 @@
             </div>
             <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/14/09/45/precious-1199183_960_720.jpg" alt="Diamond image cap">
                 <div class="card-body">
-                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                     <p class="card-text">Sans doute la plus mythique de toutes les pierres précieuses, le diamant est recherché depuis des siècles pour son éclat exceptionnel. Une gemme d'excellence qui habille les plus iconiques collections.</p>
                      <div class="d-flex justify-content-between align-items-center">
                        <div class="input-group">
                        <span class="input-group button">
-                        <button type="button" class="btn btn-outline-secondary">Acheter</button>
-                      <button type="button" class="btn btn-primary bg-success">-</button>
+                        <button type="button" class="btn btn-success">Acheter</button>
+                      <button type="button" class="btn btn-outline-success">-</button>
                     </span>
-                      <p> 1 </p>
-                      <button type="button" class="btn btn-primary bg-success ">+</button>
+                    <div class="col-2">
+                    <input type="text" name="quantity_1" class="form-control input-number" value="1" min="1" max="100">
+                </div>
+                      <button type="button" class="btn btn-outline-success ">+</button>
                     </div>
-                      <small class="text-muted">9 mins</small>
                      </div>
                    </div>
                 </div>
             </div>
-        
+            <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/07/17/00/37/pump-jack-848300_960_720.jpg" alt="Oil image cap">
+                    <div class="card-body">
+                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                         <div class="d-flex justify-content-between align-items-center">
+                           <div class="input-group">
+                           <span class="input-group button">
+                            <button type="button" class="btn btn-success">Acheter</button>
+                          <button type="button" class="btn btn-outline-success">-</button>
+                        </span>
+                        <div class="col-2">
+                        <input type="text" name="quantity_1" class="form-control input-number" value="1" min="1" max="100">
+                    </div>
+                          <button type="button" class="btn btn-outline-success ">+</button>
+                        </div>
+                         </div>
+                       </div>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
         <table class="table table-striped">
         <thead>
             <tr>
@@ -71,5 +94,7 @@
             </tr>
         </tbody>
         </table>
+    </div>
+    </div>
     </body>
 </html>
