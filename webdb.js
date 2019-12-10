@@ -7,7 +7,8 @@ $(document).ready(function () {
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
-        alert("Test -");
+        // alert("Test -");
+        
         quantity_1 = parseInt($('#quantity_1').val());
 
         // If is not undefined
