@@ -1,7 +1,6 @@
 // JavaScript source code
 
 $(document).ready(function () {
-    console.log('foo');
     var quantity_1 = 0;
     $('.btn-outline-success').click( e => {
 
