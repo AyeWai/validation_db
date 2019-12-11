@@ -1,37 +1,47 @@
-// JavaScript source code
+// JQuery source code
 
 $(document).ready(function () {
-    var quantity_1 = 0;
-    $('.btn-outline-success').click( e => {
 
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        // alert("Test -");
-        
-        quantity_1 = parseInt($('#quantity_1').val());
+    $('.less').on("click", ev=> {
 
-        // If is not undefined
+        ev.preventDefault();
+        console.log("a fonctionne");
+        var a = $(event.target).attr("name");
+        console.log(a);
+        b = "#quantity_" + a;
+        console.log(b);
 
-        $('#quantity_1').val(quantity_1 + 1);
+        val_q = parseInt($(b).val());
+        console.log(val_q);
 
+        if (val_q >= 1){
+            $(b).val(val_q - 1);
+            console.log("b");
+            console.log(val_q);
 
-        // Increment
+            }    
 
     });
 
-    $('.more').click(function (e) {
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
+    $('.more').on("click", ev =>{
+       
+        ev.preventDefault();
+        console.log("a2 fonctionne");
+        var a = $(event.target).attr("name");
+        console.log(a);
+        b = "#quantity_" + a;
+        console.log(b);
 
-        // If is not undefined
+        val_q = parseInt($(b).val());
+        console.log(val_q);
 
-        // Increment
-        if (quantity > 0) {
-            $('#quantity').val(quantity - 1);
-        }
+        if (val_q <= 99){
+            $(b).val(val_q + 1);
+            console.log("b");
+            console.log(val_q);
+
+            }    
+
     });
 
 });
