@@ -1,4 +1,53 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+echo "role" . $_SESSION['role']. "\n";
+echo "prenom" . $_SESSION['prenom']. "\n";
+echo "nom" . $_SESSION['nom']. "\n";
+
+echo "IL est l'heure :" . $_SESSION['temps']. "\n";
+echo "Temps de cession" . $_SESSION['temps_session']. "\n";
+
+$_SESSION['LAST_ACTIVITY'] = $time;
+
+echo "dernière activité" . $_SESSION['LAST_ACTIVITY']. "\n";
+
+
+
+if (isset($_SESSION['LAST_ACTIVITY']) && 
+   ($time + $_SESSION['LAST_ACTIVITY']) > $time_session) {
+    session_unset();
+    session_destroy();
+    session_start();
+}
+
+
+?>
+
+<?php
+try
+{
+	$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+}
+catch(Exception $e)
+{
+        die('Erreur : '.$e->getMessage());
+}
+
+$reponse = $bdd->query('SELECT nom, prix FROM jeux_video ORDER BY prix');
+
+while ($donnees = $reponse->fetch())
+{
+	echo $donnees['nom'] . ' coûte ' . $donnees['prix'] . ' EUR<br />';
+}
+
+$reponse->closeCursor();
+
+?>
+
+
+
+
 <html>
     <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,7 +71,7 @@
                             <div id="navbarContent" class="navbar-collapse collapse" style="">
                                 <ul class="navbar-nav">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="index.html">Accueil</a>
+                                        <a class="nav-link" href="index.php">Accueil</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="login.php">Se connecter</a>
@@ -30,9 +79,12 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Panier                                                 </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="moderation.html">Modération</a>
-                                    </li>
+                                    <?php if($_SESSION['role'] == 1){
+                                    echo '<li class="nav-item">';
+                                        echo '<a class="nav-link" href="moderation.html">Modération</a>';
+                                    echo '</li>';
+                                        }
+                                    ?>
                                 </ul>
                             </div>
                         </nav>
