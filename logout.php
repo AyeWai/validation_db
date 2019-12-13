@@ -1,5 +1,4 @@
 <?php 
-    //session_unset();
     $_SESSION['role'] = 3;
     $_SESSION['prenom'] = 'Utilisateur';
     $_SESSION['nom'] = 'Temporaire';

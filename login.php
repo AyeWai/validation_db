@@ -35,7 +35,7 @@
     <?php 
 
 // Le mot de passe n'a pas été envoyé ou n'est pas bon
-if (!isset($_POST['inputLogin']) OR $_POST['inputPassword'] != "1234")
+if (($_POST['inputLogin'] !="admin") OR ($_POST['inputPassword'] != "1234"))
 {
     echo "echec!";
     echo $_POST['inputLogin'];
@@ -43,6 +43,7 @@ if (!isset($_POST['inputLogin']) OR $_POST['inputPassword'] != "1234")
     $_SESSION['role'] = 3;
     $_SESSION['prenom'] = 'Utilisateur';
     $_SESSION['nom'] = 'Temporaire';
+    header('Location: index.php');
 }
 // Le mot de passe a été envoyé et il est bon
 else
