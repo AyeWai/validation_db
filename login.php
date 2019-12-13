@@ -1,10 +1,6 @@
 ﻿<?php 
 
     session_start();
-    echo "role" . $_SESSION['role']. "\n";
-    echo "prenom" . $_SESSION['prenom']. "\n";
-    echo "nom" . $_SESSION['nom']. "\n";
-
 ;?>
 
 <!doctype html>
@@ -23,8 +19,8 @@
     <form class="form-signin" method='POST'>
       <div class="smthing"><a href="index.php"><img class="mb-4" src="img/commodities_logo.png" alt="main_logo" width="150" height="150"></a></div>
       <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-      <label for="inputEmail" class="sr-only">E-mail</label>
-      <input type="email" name="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+      <label for="inputLogin" class="sr-only">Pseudo</label>
+      <input type="text" name="inputLogin" class="form-control" placeholder="Identifiant" required autofocus>
       <label for="inputPassword" class="sr-only">Mot de passe</label>
       <input type="password" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
       <div class="checkbox mb-3">
@@ -39,11 +35,14 @@
     <?php 
 
 // Le mot de passe n'a pas été envoyé ou n'est pas bon
-if (!isset($_POST['inputEmail']) OR $_POST['inputPassword'] != "1234")
+if (!isset($_POST['inputLogin']) OR $_POST['inputPassword'] != "1234")
 {
     echo "echec!";
-    echo $_POST['inputEmail'];
+    echo $_POST['inputLogin'];
     echo $_POST['inputPassword'];
+    $_SESSION['role'] = 3;
+    $_SESSION['prenom'] = 'Utilisateur';
+    $_SESSION['nom'] = 'Temporaire';
 }
 // Le mot de passe a été envoyé et il est bon
 else
@@ -53,15 +52,6 @@ else
     $_SESSION['role'] = 1;
     $_SESSION['prenom'] = 'Chris';
     $_SESSION['nom'] = 'SIMON';
-
-    $time = $_SERVER['REQUEST_TIME'];
-    $time_session = 300;
-    $_SESSION['temps'] = $time;
-    $_SESSION['temps_session'] = $time_session;
-
-    
-
-
 
 }
 
