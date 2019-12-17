@@ -28,7 +28,7 @@ echo "nom" . $_SESSION['nom']. "\n";
 			echo('Succès de la suppression');
 		
         }
-        elseif(isset($_POST['ID']) && $_POST['Supprimer'] == false)
+        elseif(isset($_POST['ID']) && $_POST['Modifier'] == true)
 		{
 			try
 			{
@@ -47,6 +47,53 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_fname' => $_POST['Prenom'],
             'u_lname' => $_POST['Nom'],
             'u_capacity' => $_POST['Role'],
+			));
+			echo('Succès de la modification');
+		
+        }
+        if(isset($_POST['P_ID']) && $_POST['P_Supprimer'] == true)
+		{
+			try
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=valid_db;charset=utf8', 'root', '');
+			}
+			catch(Exception $e)
+			{       
+					die('Erreur : '.$e->getMessage());
+			}
+			
+			echo $_POST['P_ID'];
+			echo $_POST['P_Supprimer'];
+			$req = $bdd->prepare('DELETE FROM valid_db.products WHERE products.product_id =:u_id');
+			$req->execute(array(
+			'u_id' => $_POST['P_ID']
+			));
+			echo('Succès de la suppression');
+		
+        }
+        elseif(isset($_POST['P_ID']) && $_POST['P_Modifier'] == true)
+		{
+			try
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=valid_db;charset=utf8', 'root', '');
+			}
+			catch(Exception $e)
+			{       
+					die('Erreur : '.$e->getMessage());
+			}
+			
+			echo $_POST['P_ID'];
+			echo $_POST['P_Supprimer'];
+			$req = $bdd->prepare('UPDATE valid_db.products SET products.product_id =:u_id , products.name=:u_name, products.description=:u_description, products.create_date=:u_create_date, products.price=:u_price, products.img=:u_img WHERE products.product_id =:u_id');
+            $t=time();
+            $c_date =(date("Y/m/d H:i:s",$t));
+            $req->execute(array(
+            'u_id' => $_POST['P_ID'],
+            'u_name' => $_POST['P_Nom'],
+            'u_create_date' => $c_date,
+            'u_description' => $_POST['P_Description'],
+            'u_price' => $_POST['P_Prix'],
+            'u_img' => $_POST['P_Image'],
 			));
 			echo('Succès de la modification');
 		
@@ -166,12 +213,10 @@ $reponse->closeCursor();
     <label for="Role">Role</label>
     <input type="text" class="form-control" name="Role" placeholder="">
     </br>
-    <div class="form-check form-check-inline">
-    <label class="form-check-label" for="saveOrDelOption">Supprimer</label>
-    <input class="form-check-input" type="radio" name="Supprimer" id="del_1" value="true">
-    </div>
-    </br>
-    <button type="submit" class="save btn btn-success">Soumettre</button>
+    <span class="input-group button">
+    <button type="submit" class="btn btn-success" value="true" name="Modifier">Modifier</button>
+    <button type="submit" class="btn btn-danger" value="true" name="Supprimer">Supprimer</button>
+    </span>
     </form>
     </div>
     </div>
@@ -227,10 +272,6 @@ while ($donnees = $reponse->fetch())
     echo 
       '</tbody>
   </table>
-  <span class="input-group button">
-    <button type="button" class="btn btn-success">Modifier</button>
-    <button type="button" class="btn btn-danger">Supprimer</button>
-</span>
 </div>';
 
 
@@ -246,22 +287,20 @@ $reponse->closeCursor();
     <div class="col-12">
     <form action=moderation.php method="post">
     <label for="ID">ID</label>
-    <input type="number" class="form-control" name="ID" placeholder="" required>
+    <input type="number" class="form-control" name="P_ID" placeholder="" required>
     <label for="Nom">Nom</label>
-    <input type="text" class="form-control" name="Nom" placeholder="">
+    <input type="text" class="form-control" name="P_Nom" placeholder="">
     <label for="Description">Description</label>
-    <input type="text" class="form-control" name="Description" placeholder="">
+    <input type="text" class="form-control" name="P_Description" placeholder="">
     <label for="Prix">Prix</label>
-    <input type="text" class="form-control" name="Prix" placeholder="">
+    <input type="text" class="form-control" name="P_Prix" placeholder="">
     <label for="Image">Image</label>
-    <input type="text" class="form-control" name="Image" placeholder="">
+    <input type="text" class="form-control" name="P_Image" placeholder="">
     </br>
-    <div class="form-check form-check-inline">
-    <label class="form-check-label" for="saveOrDelOption">Supprimer</label>
-    <input class="form-check-input" type="radio" name="Supprimer" id="del_1" value="true">
-    </div>
-    </br>
-    <button type="submit" class="save btn btn-success">Soumettre</button>
+    <span class="input-group button">
+    <button type="submit" class="btn btn-success" value="true" name="P_Modifier">Modifier</button>
+    <button type="submit" class="btn btn-danger" value="true" name="P_Supprimer">Supprimer</button>
+    </span>
     </form>
     </div>
     </div>

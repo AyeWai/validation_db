@@ -44,8 +44,12 @@ insert into valid_db.products(product_id, name, description, create_date, price,
 insert into valid_db.products(product_id, name, description, create_date, price, img) values(5, "Tête de Bétail", "L’idée est simple : le particulier achète une ou plusieurs vaches (1 530 euros par tête actuellement) en versant des fonds à l’AFIC, qui s’occupe de tout et loue ensuite ce cheptel à un exploitant." , CURRENT_TIMESTAMP(), 1530.80, "https://cdn.pixabay.com/photo/2017/09/24/17/19/cow-2782461_960_720.jpg");
 insert into valid_db.products(product_id, name, description, create_date, price, img) values(6, "Unité de Cryptomonnaie", "Une cryptomonnaie, dite aussi cryptoactif, cryptodevise, monnaie cryptographique ou encore cybermonnaie, est une monnaie émise de pair à pair, sans nécessité de banque centrale, utilisable au moyen d'un réseau informatique décentralisé." , CURRENT_TIMESTAMP(), 6442.42, "https://cdn.pixabay.com/photo/2018/06/06/22/35/bitcoin-3458994_960_720.jpg");
 
-insert into valid_db.users (user_id, pseudo, mdp, fname, lname, capacity) values(1, "admin", "1234","Chris","SIMON", 7);
-insert into valid_db.users (user_id, pseudo, mdp, fname, lname, capacity) values(2, "jjrousseau_91", "azerty","Jean-Jacques","ROUSSEAU", 1);
+insert into valid_db.users (user_id, pseudo, mdp, fname, lname, capacity) values(1, "admin", "1234","Chris","SIMON", 1);
+insert into valid_db.users (user_id, pseudo, mdp, fname, lname, capacity) values(2, "jjrousseau_91", "azerty","Jean-Jacques","ROUSSEAU", 2);
+insert into valid_db.users (user_id, pseudo, mdp, fname, lname, capacity) values(3, "rudy_972", "poiuyt","Rudy","SAXEMARD", 2);
+insert into valid_db.users (user_id, pseudo, mdp, fname, lname, capacity) values(4, "n.p", "9876","Napoléon","BONAPARTE", 3);
+insert into valid_db.users (user_id, pseudo, mdp, fname, lname, capacity) values(5, "imperator_nene", "aqwzsxedc","Warren","BUFFET", 2);
+
 
 insert into valid_db.basket (user_id, product_id, basket_id, quantity) values (2, 1, 1, 4);
 
