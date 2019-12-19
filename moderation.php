@@ -25,7 +25,8 @@ echo "nom" . $_SESSION['nom']. "\n";
 			$req->execute(array(
 			'u_id' => $_POST['ID']
 			));
-			echo('Succès de la suppression');
+            echo('Succès de la suppression');
+            $req->closeCursor();
 		
         }
         elseif(isset($_POST['ID']) && $_POST['Modifier'] == true)
@@ -47,11 +48,38 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_fname' => $_POST['Prenom'],
             'u_lname' => $_POST['Nom'],
             'u_capacity' => $_POST['Role'],
-			));
+            ));
+            $req->closeCursor();
 			echo('Succès de la modification');
 		
         }
-        if(isset($_POST['P_ID']) && $_POST['P_Supprimer'] == true)
+        elseif(isset($_POST['ID']) && $_POST['Ajouter'] == true)
+		{
+			try
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=valid_db;charset=utf8', 'root', '');
+			}
+			catch(Exception $e)
+			{       
+					die('Erreur : '.$e->getMessage());
+			}
+			
+			echo $_POST['ID'];
+            echo $_POST['Prenom'];
+            echo $_POST['Nom'];
+            echo $_POST['Role'];
+			$req = $bdd->prepare('INSERT INTO valid_db.users (user_id, fname, lname, capacity) VALUES (:u_id, :u_fname , :u_lname, :u_capacity)');
+			$req->execute(array(
+            'u_id' => $_POST['ID'],
+            'u_fname' => $_POST['Prenom'],
+            'u_lname' => $_POST['Nom'],
+            'u_capacity' => $_POST['Role'],
+            ));
+            $req->closeCursor();
+			echo('Succès de l\'ajout');
+		
+        }
+        elseif(isset($_POST['P_ID']) && $_POST['P_Supprimer'] == true)
 		{
 			try
 			{
@@ -67,7 +95,8 @@ echo "nom" . $_SESSION['nom']. "\n";
 			$req = $bdd->prepare('DELETE FROM valid_db.products WHERE products.product_id =:u_id');
 			$req->execute(array(
 			'u_id' => $_POST['P_ID']
-			));
+            ));
+            $req->closeCursor();
 			echo('Succès de la suppression');
 		
         }
@@ -94,9 +123,100 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_description' => $_POST['P_Description'],
             'u_price' => $_POST['P_Prix'],
             'u_img' => $_POST['P_Image'],
-			));
+            ));
+            $req->closeCursor();
 			echo('Succès de la modification');
 		
+        }
+        elseif(isset($_POST['P_ID']) && $_POST['P_Ajouter'] == true)
+		{
+			try
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=valid_db;charset=utf8', 'root', '');
+			}
+			catch(Exception $e)
+			{       
+					die('Erreur : '.$e->getMessage());
+			}
+			
+			echo $_POST['ID'];
+            echo $_POST['Prenom'];
+            echo $_POST['Nom'];
+            echo $_POST['Role'];
+			$req = $bdd->prepare('INSERT INTO valid_db.products (product_id, name, create_date, description, price, img) VALUES (:u_id, :u_name , CURRENT_TIMESTAMP(), :u_description, :u_price, :u_img)');
+			$req->execute(array(
+            'u_id' => $_POST['P_ID'],
+            'u_name' => $_POST['P_Nom'],
+            //'u_create_date' => $c_date,
+            'u_description' => $_POST['P_Description'],
+            'u_price' => $_POST['P_Prix'],
+            'u_img' => $_POST['P_Image'],
+            ));
+            $req->closeCursor();
+			echo('Succès de l\'ajout');
+		
+        }
+        elseif(isset($_POST['U_ID']) && $_POST['U_Supprimer'] == true)
+		{
+			try
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=valid_db;charset=utf8', 'root', '');
+			}
+			catch(Exception $e)
+			{       
+					die('Erreur : '.$e->getMessage());
+			}
+			
+			$req = $bdd->prepare('DELETE FROM valid_db.users WHERE users.user_id =:u_id');
+			$req->execute(array(
+            'u_id' => $_POST['U_ID'],
+            ));
+            $req->closeCursor();
+			echo('Succès de la suppression');
+		
+        }
+        elseif(isset($_POST['U_ID']) && $_POST['U_Modifier'] == true)
+		{
+			try
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=valid_db;charset=utf8', 'root', '');
+			}
+			catch(Exception $e)
+			{       
+					die('Erreur : '.$e->getMessage());
+			}
+			
+			$req = $bdd->prepare('UPDATE valid_db.users SET users.user_id =:u_id , users.pseudo=:u_pseudo, users.mdp=:u_mdp WHERE users.user_id =:u_id');
+            $req->execute(array(
+            'u_id' => $_POST['U_ID'],
+            'u_pseudo' => $_POST['U_Identifiant'],
+            'u_mdp' => $_POST['U_Mdp'],
+            ));
+            $req->closeCursor();
+			echo('Succès de la modification');
+		
+        }
+        elseif(isset($_POST['U_ID']) && $_POST['U_Ajouter'] == true)
+		{
+			try
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=valid_db;charset=utf8', 'root', '');
+			}
+			catch(Exception $e)
+			{       
+					die('Erreur : '.$e->getMessage());
+			}
+            echo $_POST['U_ID'];
+            echo $_POST['U_Identifiant'];
+            echo $_POST['U_Mdp'];
+			$req = $bdd->prepare('INSERT INTO valid_db.users (user_id, pseudo, mdp) VALUES (:u_id, :u_pseudo, :u_mdp)');
+			$req->execute(array(
+            'u_id' => $_POST['U_ID'],
+            'u_pseudo' => $_POST['U_Identifiant'],
+            'u_mdp' => $_POST['U_Mdp'],
+            ));
+            $req->closeCursor();
+            echo('Succès de l\'ajout');
         }
         else{
             echo 'Echec modif';
@@ -150,7 +270,6 @@ echo "nom" . $_SESSION['nom']. "\n";
                             </div>
                     </div>
                 <div class="main">
-
 <?php
 
  try
@@ -214,7 +333,8 @@ $reponse->closeCursor();
     <input type="text" class="form-control" name="Role" placeholder="">
     </br>
     <span class="input-group button">
-    <button type="submit" class="btn btn-success" value="true" name="Modifier">Modifier</button>
+    <button type="submit" class="btn btn-success" value="true" name="Ajouter">Ajouter</button>
+    <button type="submit" class="btn btn-light" value="true" name="Modifier">Modifier</button>
     <button type="submit" class="btn btn-danger" value="true" name="Supprimer">Supprimer</button>
     </span>
     </form>
@@ -298,7 +418,8 @@ $reponse->closeCursor();
     <input type="text" class="form-control" name="P_Image" placeholder="">
     </br>
     <span class="input-group button">
-    <button type="submit" class="btn btn-success" value="true" name="P_Modifier">Modifier</button>
+    <button type="submit" class="btn btn-success" value="true" name="P_Ajouter">Ajouter</button>
+    <button type="submit" class="btn btn-light" value="true" name="P_Modifier">Modifier</button>
     <button type="submit" class="btn btn-danger" value="true" name="P_Supprimer">Supprimer</button>
     </span>
     </form>
@@ -352,10 +473,6 @@ while ($donnees = $reponse->fetch())
     echo 
       '</tbody>
   </table>
-  <span class="input-group button">
-    <button type="button" class="btn btn-success">Modifier</button>
-    <button type="button" class="btn btn-danger">Supprimer</button>
-</span>
 </div>';
 
 
@@ -370,26 +487,22 @@ $reponse->closeCursor();
     <div class="row">
     <div class="col-12">
     <form action=moderation.php method="post">
-    <label for="ID">ID</label>
-    <input type="number" class="form-control" name="ID" placeholder="" required>
-    <label for="Prenom">Prénom</label>
-    <input type="text" class="form-control" name="Prenom" placeholder="">
-    <label for="Nom">Nom</label>
-    <input type="text" class="form-control" name="Nom" placeholder="">
-    <label for="Role">Role</label>
-    <input type="text" class="form-control" name="Role" placeholder="">
+    <label for="U_ID">ID</label>
+    <input type="number" class="form-control" name="U_ID" placeholder="" required>
+    <label for="U_Identifiant">Identifiant</label>
+    <input type="text" class="form-control" name="U_Identifiant" placeholder="">
+    <label for="U_Mdp">Mot de passe</label>
+    <input type="text" class="form-control" name="U_Mdp" placeholder="">
     </br>
-    <div class="form-check form-check-inline">
-    <label class="form-check-label" for="saveOrDelOption">Supprimer</label>
-    <input class="form-check-input" type="radio" name="Supprimer" id="del_1" value="true">
-    </div>
-    </br>
-    <button type="submit" class="save btn btn-success">Soumettre</button>
+    <span class="input-group button">
+    <button type="submit" class="btn btn-success" value="true" name="U_Ajouter">Ajouter</button>
+    <button type="submit" class="btn btn-light" value="true" name="U_Modifier">Modifier</button>
+    <button type="submit" class="btn btn-danger" value="true" name="U_Supprimer">Supprimer</button>
+    </span>
     </form>
     </div>
     </div>
     ';
-
 ?>
 
 

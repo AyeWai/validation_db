@@ -7,7 +7,7 @@ CREATE DATABASE IF NOT EXISTS valid_db;
 
 create table valid_db.products (
     product_id int,
-    name varchar(20),
+    name varchar(30),
     description varchar(400),
     create_date timestamp,
     price float,
@@ -58,6 +58,8 @@ insert into valid_db.basket (user_id, product_id, basket_id, quantity) values (2
 select * from valid_db.products;
 select * from valid_db.users;
 select * from valid_db.basket;
+
+/*SELECT * FROM `products` ORDER BY `products`.`product_id` ASC
 
 
 
