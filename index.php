@@ -34,9 +34,17 @@ echo "nom" . $_SESSION['nom']. "\n";
                                     <li class="nav-item active">
                                         <a class="nav-link" href="index.php">Accueil</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="login.php">Se connecter</a>
-                                    </li>
+                                    <?php if($_SESSION['role'] == 1){
+                                    echo '<li class="nav-item">';
+                                        echo '<a class="nav-link" href="login.php">Se déconnecter</a>';
+                                    echo '</li>';
+                                        }
+                                        else{
+                                            echo '<li class="nav-item">';
+                                        echo '<a class="nav-link" href="login.php">Se connecter</a>';
+                                    echo '</li>';
+                                        }
+                                    ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Panier                                                 </a>
                                     </li>

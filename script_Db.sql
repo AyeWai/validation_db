@@ -35,6 +35,7 @@ create table valid_db.basket (
     constraint fk_basket2 foreign key(user_id) references users(user_id)
     );
 
+
 /*INSERTION DES PRODUITS DANS LES TABLES*/
 
 insert into valid_db.products(product_id, name, description, create_date, price, img) values(1, "Once Or", "La monnaie des dieux. Apprécié depuis l'aube de l'humanité, il aura toujours de la valeur après le déclin de celle-ci" , CURRENT_TIMESTAMP(), 1321.79, "https://cdn.pixabay.com/photo/2016/10/16/10/11/bullion-1744773_960_720.jpg");
@@ -59,8 +60,18 @@ select * from valid_db.products;
 select * from valid_db.users;
 select * from valid_db.basket;
 
-/*SELECT * FROM `products` ORDER BY `products`.`product_id` ASC
+/*SELECT * FROM `products` ORDER BY `products`.`product_id` ASC*/
 
+/*DELIMITER |
+CREATE TRIGGER user_role_update
+BEFORE UPDATE ON users
+FOR EACH ROW 
+BEGIN
+    IF NEW.capacity == 1 THEN
+        SET NEW.capacity = OLD.capacity;
+    END IF;
+END |
+DELIMITER ;*/
 
 
 
