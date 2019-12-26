@@ -43,6 +43,8 @@ Le site se compose de 4 pages princiales:
 -Panier
 -Modération
 
-*La page Accueil est la page d'accueil comme son nom l'indique
+La page "Accueil" est la page d'accueil comme son nom l'indique est la page d'accueil du site web, la seule page accessible aux utilisateurs non admin. 
+Selon les entrées de la table produit de la base de données et leur nombre, les articles s'intègrent automatiquement à la page.
+Sur cette même page, l'utilisateur peut grâce à un système de bouton sélectionner la quantité de chaque article qu'ils désirent et qui seront affichés dans la page "Panier". 
 
 
