@@ -57,6 +57,14 @@ La page Modération n'est visible après connexion que à l'admin ou il peut y a
 
 ### La base de données
 
+Elle est composée de 3 tables, basket, products and users.
+
+La table basket est utilisée par la page panier, chaque entrée est décrite par un identifiant d'utilisateur, un identifiant de produit et une quantité.
+
+La table products contient les tous les articles, ici nos matières première ainsi que leurs caractéristiques, dont l'URL de leur photo dans la page accueil.
+
+La table users contient les utilisateurs, c'est à dire leur description ainsi que les identifiants et mots de passe de chacun. 
+
 
 
 
