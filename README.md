@@ -76,7 +76,11 @@ et l'admin a accès à toutes les pages dont la page de modération qui lui perm
 Pour se connecter en tant qu'admin pour la première fois sur le site, il suffit de taper admin avec le mot de passe 1234. Si aucun identifiant n'est correct ou n'existe dans la base, l'utilisateur a un profil de particuliers par défaut.
 
 
+## Anomalies
 
+Malgré des recherches approfondies et une syntaxe qui semble être respectée, un problème subsitse, la création préalable de trigger dans la base de données ne semble pas vouloir fonctionner. C'est pour cela que dans lescript SQL on les retrouve en commentaire, car impossible de les implémenter.
+
+De plus, pour tester ce développement, il faut désactiver les erreurs php, car apparaissent parfois des erreurs, non fatales mais dû à des formulaires pas encore remplis par exemple. Mais rien qui entrave le bon fonctionnement du site
 
 
 
