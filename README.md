@@ -36,6 +36,8 @@ Votre machine doit avoir un accès constant à internet, les produits illustrant
 
 ## Utilisation
 
+### Les pages
+
 Le site se compose de 4 pages princiales:
 
 -Accueil  
@@ -47,11 +49,15 @@ La page "Accueil" est la page d'accueil comme son nom l'indique est la page d'ac
 Selon les entrées de la table "produit" de la base de données et leur nombre, les articles s'intègrent automatiquement à la page avec leurs caractéristiques propres.
 Sur cette même page, l'utilisateur peut grâce à un système de bouton sélectionner la quantité de chaque article qu'ils désirent et qui seront affichés dans la page "Panier".
 
-La page "Se connecter" permet de s'indentifier comme un utilisateur particulier ou un admin. Une fois connecté, l'utilisateur admin a accès à l'intégralité du site dont la page "Modération" et l'utilisateur institutionnel accès aux articles sensibles tels que l'uranium .
+La page "Se connecter" permet de s'indentifier comme un utilisateur particulier ou un admin. Une fois connecté, l'utilisateur admin a accès à l'intégralité du site dont la page "Modération" et l'utilisateur institutionnel accès aux articles sensibles tel que l'uranium .
     
 La page Panier fait la somme des articles sélectionnés par l'utilisateur selon le nombre d'articles sélectionné et leur prix.
 
 La page Modération n'est visible après connexion que à l'admin ou il peut y ajouter, supprimer, ou modifier articles et utilisateurs. La page utilise la pdo pour agir sur la base de données et ainsi les informations se retrouvent modifiées sur le site.
+
+### La base de données
+
+
 
 
 
