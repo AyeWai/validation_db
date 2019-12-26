@@ -49,7 +49,7 @@ La page "Accueil" est la page d'accueil comme son nom l'indique est la page d'ac
 Selon les entrées de la table "produit" de la base de données et leur nombre, les articles s'intègrent automatiquement à la page avec leurs caractéristiques propres.
 Sur cette même page, l'utilisateur peut grâce à un système de bouton sélectionner la quantité de chaque article qu'ils désirent et qui seront affichés dans la page "Panier".
 
-La page "Se connecter" permet de s'indentifier comme un utilisateur particulier ou un admin. Une fois connecté, l'utilisateur admin a accès à l'intégralité du site dont la page "Modération" et l'utilisateur institutionnel accès aux articles sensibles tel que l'uranium .
+La page "Se connecter" permet de s'indentifier comme un utilisateur particulier ou un admin. Une fois connecté, l'utilisateur admin a accès à l'intégralité du site dont la page "Modération" et l'utilisateur institutionnel (Etats et organisations d'Etats) accès aux articles sensibles tel que l'uranium .
     
 La page Panier fait la somme des articles sélectionnés par l'utilisateur selon le nombre d'articles sélectionné et leur prix.
 
@@ -63,8 +63,17 @@ La table basket est utilisée par la page panier, chaque entrée est décrite pa
 
 La table products contient les tous les articles, ici nos matières première ainsi que leurs caractéristiques, dont l'URL de leur photo dans la page accueil.
 
-La table users contient les utilisateurs, c'est à dire leur description ainsi que les identifiants et mots de passe de chacun. 
+La table users contient les utilisateurs, c'est à dire leur description ainsi que les identifiants et mots de passe de chacun.
+C'est dans cette table que tous les accès particuliers attribués aux utilisateurs sont implémentés grâce à la colonne "capacity".
 
+1   Pour un administrateur  
+2   Pour un institutionnel  
+3   Pour un particulier
+
+Le particulier ne peut que lire les articles dans la page d'accueil,, l'institutionnel peut voir de plus voir les articles sensibles
+et l'admin a accès à toutes les pages dont la page de modération qui lui permet d'avoir un système CRUD total sur le site.
+
+Pour se connecter en tant qu'admin pour la première fois sur le site, il suffit de taper admin avec le mot de passe 1234. Si aucun identifiant n'est correct ou n'existe dans la base, l'utilisateur a un profil de particuliers par défaut.
 
 
 
