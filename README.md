@@ -9,7 +9,7 @@ Commodities Market est un site web à l'intention d'investisseurs ( particuliers
 Utilisez GitHub et clonez le repository de l'adresse suivante https://github.com/AyeWai/validation_db pour récupérer tous les fichiers necessaires.
 
 
-##Prérequis
+## Prérequis
 
 Pour le bon fonctionnement du site web, il nous faut la suite de programmes LAMP ( Apache, MySQL et PhpMyAdmin pour environnement Linux).
 On installe et lance celle-ci dans une machine virtuelle avec les commandes suivantes :
@@ -43,9 +43,15 @@ Le site se compose de 4 pages princiales:
 -Panier  
 -Modération  
 
-La page "Accueil" est la page d'accueil comme son nom l'indique est la page d'accueil du site web, l'une des 3 pages accessibles utilisateurs non admin. 
+    La page "Accueil" est la page d'accueil comme son nom l'indique est la page d'accueil du site web, l'une des 3 pages accessibles utilisateurs non admin. 
 Selon les entrées de la table "produit" de la base de données et leur nombre, les articles s'intègrent automatiquement à la page avec leurs caractéristiques propres.
 Sur cette même page, l'utilisateur peut grâce à un système de bouton sélectionner la quantité de chaque article qu'ils désirent et qui seront affichés dans la page "Panier".
+
+    La page "Se connecter" permet de s'indentifier comme un utilisateur particulier ou un admin. Une fois connecté, l'utilisateur admin a accès à l'intégralité du site dont la page "Modération" et l'utilisateur institutionnel accès aux articles sensibles tels que l'uranium .
+    
+    La page Panier
+
+
 
 
 
