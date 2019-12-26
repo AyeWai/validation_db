@@ -38,10 +38,10 @@ Votre machine doit avoir un accès constant à internet, les produits illustrant
 
 Le site se compose de 4 pages princiales:
 
--Accueil
--Se connecter
--Panier
--Modération
+-Accueil  
+-Se connecter  
+-Panier  
+-Modération  
 
 La page "Accueil" est la page d'accueil comme son nom l'indique est la page d'accueil du site web, la seule page accessible aux utilisateurs non admin. 
 Selon les entrées de la table produit de la base de données et leur nombre, les articles s'intègrent automatiquement à la page.
