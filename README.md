@@ -36,5 +36,13 @@ Votre machine doit avoir un accès constant à internet, les produits illustrant
 
 ## Utilisation
 
+Le site se compose de 4 pages princiales:
+
+-Accueil
+-Se connecter
+-Panier
+-Modération
+
+*La page Accueil est la page d'accueil comme son nom l'indique
 
 
