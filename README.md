@@ -17,26 +17,24 @@ On installe et lance celle-ci dans une machine virtuelle avec les commandes suiv
 ```bash
 
 mkdir WebDir
-sudo apt-get -y update
+vagrant init ubuntu/xenial64
+vagrant up
+vagrant ssh
 
+sudo apt-get -y update
 sudo apt-get install apache2 -y
 sudo apt-get install php7.1
 sudo apt-get install mysql-server php7.1-mysql
+sudo apt install phpmyadmin
 
 service mysql restart
 service apache2 restart
 
 ```
+Le git clone doit être inseré dans le localhost. Ensuite il faut démarrer phpmyadmin et importer le contenu du script script_Db.sql ou l'importer directement dans MySQL, pour obtenir la base de données. 
+Votre machine doit avoir un accès constant à internet, les produits illustrant la base de données provenant de site web d'images libres de droits.
 
 ## Utilisation
 
 
-```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
