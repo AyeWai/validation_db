@@ -49,7 +49,9 @@ Sur cette même page, l'utilisateur peut grâce à un système de bouton sélect
 
 La page "Se connecter" permet de s'indentifier comme un utilisateur particulier ou un admin. Une fois connecté, l'utilisateur admin a accès à l'intégralité du site dont la page "Modération" et l'utilisateur institutionnel accès aux articles sensibles tels que l'uranium .
     
-La page Panier
+La page Panier fait la somme des articles sélectionnés par l'utilisateur selon le nombre d'articles sélectionné et leur prix.
+
+La page Modération n'est visible après connexion que à l'admin ou il peut y ajouter, supprimer, ou modifier articles et utilisateurs. La page utilise la pdo pour agir sur la base de données et ainsi les informations se retrouvent modifiées sur le site.
 
 
 
