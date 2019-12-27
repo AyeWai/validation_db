@@ -281,7 +281,7 @@ catch(Exception $e)
         die('Erreur : '.$e->getMessage());
 }
 
-$reponse = $bdd->query('SELECT product_id, name, price, quantity FROM products, basket WHERE products.product_id == basket.product_id');
+$reponse = $bdd->query('SELECT products.product_id, name, price, quantity FROM products, basket WHERE products.product_id = basket.product_id');
 
 echo '<div class="row">
     <h1 class="text-center">Panier</h1>
@@ -300,10 +300,10 @@ while ($donnees = $reponse->fetch())
 {
     
     echo '    <tr>
-              <th scope="row">'.$donnees['user_id'].'</th>
-              <td>'.$donnees['fname'].'</td>
-              <td>'.$donnees['lname'].'</td>
-              <td>'.$donnees['capacity'].'</td>
+              <th scope="row">'.$donnees['product_id'].'</th>
+              <td>'.$donnees['name'].'</td>
+              <td>'.$donnees['price'].'</td>
+              <td>'.$donnees['quantity'].'</td>
               </tr>';
 }
     echo 
