@@ -1,9 +1,10 @@
 /*CREATION DATABASE*/
 
 DROP DATABASE IF EXISTS valid_db;
-CREATE DATABASE IF NOT EXISTS valid_db;
+CREATE DATABASE IF NOT EXISTS valid_db ; 
 
-/*CREATION TABLES*/
+/*CREATION TABLES AND TABLES*/
+
 
 create table valid_db.products (
     product_id int,
@@ -14,6 +15,9 @@ create table valid_db.products (
     img varchar(200),
     constraint pk_products primary key(product_id)
     );
+
+CREATE VIEW ten_last3 AS
+SELECT * FROM valid_db.products ORDER BY products.create_date DESC LIMIT 10; /*Ne retourne aucune erreur dans MySQL*/
 
 create table valid_db.users (
     user_id int,
