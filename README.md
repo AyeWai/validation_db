@@ -82,6 +82,10 @@ Malgré des recherches approfondies et une syntaxe qui semble être respectée, 
 
 De plus, pour tester ce développement, il faut désactiver les erreurs php, car apparaissent parfois des erreurs, non fatales mais dû à des formulaires pas encore remplis par exemple. Mais rien qui entrave le bon fonctionnement du site
 
+Erratum 27/12/2019
+
+Les triggers fonctionnent, mais quand les instructions restent simples. Impossible d'implémenter une condition de style "IF ...THEN".
+
 
 
 
