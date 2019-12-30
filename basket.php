@@ -307,7 +307,7 @@ while ($donnees = $reponse->fetch())
               </tr>';
 }
 $reponse->closeCursor();
-$reponse2 = $bdd->query('SELECT quantity FROM products, basket WHERE products.product_id = basket.product_id');
+$reponse2 = $bdd->query('SELECT quantity FROM total_basket');
 $donnees2 = $reponse2->fetch();    
 echo 
         '<tr>

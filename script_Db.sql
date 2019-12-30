@@ -69,10 +69,3 @@ select * from valid_db.basket;
 
 CREATE TRIGGER `totquantity` AFTER INSERT ON `basket` FOR EACH ROW INSERT INTO valid_db.total_basket SELECT SUM(basket.quantity) FROM basket;
 
-/*CREATE TRIGGER valid_db.to_basket
-ON valid_db.basket
-AFTER INSERT, DELETE
-AS
-BEGIN
-    INSERT INTO valid_db.total_basket SELECT SUM(basket.quantity) FROM basket;
-END*/
