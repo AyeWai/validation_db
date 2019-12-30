@@ -259,7 +259,7 @@ echo "nom" . $_SESSION['nom']. "\n";
                                                 <a class="nav-link" href="login.php">Se connecter</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Panier                                                 </a>
+                                                <a class="nav-link" href="basket.php">Panier                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="moderation.php">Modération</a>

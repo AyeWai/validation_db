@@ -16,8 +16,8 @@ create table valid_db.products (
     constraint pk_products primary key(product_id)
     );
 
-CREATE VIEW ten_last3 AS
-SELECT * FROM valid_db.products ORDER BY products.create_date DESC LIMIT 10; /*Ne retourne aucune erreur dans MySQL*/
+CREATE VIEW valid_db.ten_last3 AS
+SELECT * FROM valid_db.products ORDER BY products.create_date DESC LIMIT 10;/*Ne retourne aucune erreur dans MySQL*/
 
 create table valid_db.users (
     user_id int,
@@ -39,8 +39,10 @@ create table valid_db.basket (
     constraint fk_basket2 foreign key(user_id) references users(user_id)
     );
 
+create table valid_db.total_basket (
+    total_quanity int
+    );
 
-/*INSERTION DES PRODUITS DANS LES TABLES*/
 
 insert into valid_db.products(product_id, name, description, create_date, price, img) values(1, "Once Or", "La monnaie des dieux. Apprécié depuis l'aube de l'humanité, il aura toujours de la valeur après le déclin de celle-ci" , CURRENT_TIMESTAMP(), 1321.79, "https://cdn.pixabay.com/photo/2016/10/16/10/11/bullion-1744773_960_720.jpg");
 insert into valid_db.products(product_id, name, description, create_date, price, img) values(2, "Diamant 5.50ct", "Sans doute la plus mythique de toutes les pierres précieuses, le diamant est recherché depuis des siècles pour son éclat exceptionnel. Une gemme d'excellence qui habille les plus iconiques collections." , CURRENT_TIMESTAMP(), 10794.20, "https://cdn.pixabay.com/photo/2016/02/14/09/45/precious-1199183_960_720.jpg");
@@ -64,21 +66,13 @@ select * from valid_db.products;
 select * from valid_db.users;
 select * from valid_db.basket;
 
-/*SELECT * FROM `products` ORDER BY `products`.`product_id` ASC*/
 
-/*DELIMITER |
-CREATE TRIGGER user_role_update
-BEFORE UPDATE ON users
-FOR EACH ROW 
+CREATE TRIGGER `totquantity` AFTER INSERT ON `basket` FOR EACH ROW INSERT INTO valid_db.total_basket SELECT SUM(basket.quantity) FROM basket;
+
+/*CREATE TRIGGER valid_db.to_basket
+ON valid_db.basket
+AFTER INSERT, DELETE
+AS
 BEGIN
-    IF NEW.capacity == 1 THEN
-        SET NEW.capacity = OLD.capacity;
-    END IF;
-END |
-DELIMITER ;*/
-
-
-
-
-
-
+    INSERT INTO valid_db.total_basket SELECT SUM(basket.quantity) FROM basket;
+END*/

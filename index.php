@@ -46,7 +46,7 @@ echo "nom" . $_SESSION['nom']. "\n";
                                         }
                                     ?>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Panier                                                 </a>
+                                        <a class="nav-link" href="basket.php">Panier                                                 </a>
                                     </li>
                                     <?php if($_SESSION['role'] == 1){
                                     echo '<li class="nav-item">';
