@@ -306,11 +306,19 @@ while ($donnees = $reponse->fetch())
               <td>'.$donnees['quantity'].'</td>
               </tr>';
 }
-    echo 
-      '</tbody>
+$reponse->closeCursor();
+$reponse2 = $bdd->query('SELECT quantity FROM products, basket WHERE products.product_id = basket.product_id');
+$donnees2 = $reponse2->fetch();    
+echo 
+        '<tr>
+            <th scope="row">Total</th>
+            <td>dfg</td>
+            <td>'.$donnees2['quantity'].'</td>
+            <td>hfgh</td>
+        </tr>
+      </tbody>
   </table>
 </div>';
-
 
 $reponse->closeCursor();
 
