@@ -307,13 +307,13 @@ while ($donnees = $reponse->fetch())
               </tr>';
 }
 $reponse->closeCursor();
-$reponse2 = $bdd->query('SELECT quantity FROM total_basket');
+$reponse2 = $bdd->query('SELECT total_quantity FROM total_basket');
 $donnees2 = $reponse2->fetch();    
 echo 
         '<tr>
             <th scope="row">Total</th>
             <td>dfg</td>
-            <td>'.$donnees2['quantity'].'</td>
+            <td>'.$donnees2['total_quantity'].'</td>
             <td>hfgh</td>
         </tr>
       </tbody>
