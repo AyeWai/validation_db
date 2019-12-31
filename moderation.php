@@ -293,9 +293,9 @@ echo '
     
     echo '
 
-        <div class="media text-muted pt-3">
-          <img data-src="'.$donnees['img'].'" alt="" class="mr-2 rounded">
-          <p class="media-body pb-3 mb-0 small lh-125 border-gray">
+        <div class="media text-muted pt-3 ">
+          <img src="'.$donnees['img'].'" alt="" class="mr-2 rounded" style="width:75px">
+          <p class="media-body pb-3 mb-0 small lh-125 ">
             <strong class="d-block text-gray-dark">'.$donnees['name'].'</strong>'.$donnees['description'].'
           </p>
         </div>';
