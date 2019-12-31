@@ -270,6 +270,53 @@ echo "nom" . $_SESSION['nom']. "\n";
                             </div>
                     </div>
                 <div class="main">
+
+<?php
+
+try
+{
+   $bdd = new PDO('mysql:host=localhost;dbname=valid_db;charset=utf8', 'root', '');
+}
+catch(Exception $e)
+{       
+       die('Erreur : '.$e->getMessage());
+}
+
+$reponse = $bdd->query('SELECT product_id, name, description, create_date, price, img  FROM products');
+
+echo '
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h3 class="border-gray pb-2 mb-0">Ajout récents (10 derniers)</h3>';
+
+        while ($donnees = $reponse->fetch())
+{
+    
+    echo '
+
+        <div class="media text-muted pt-3">
+          <img data-src="'.$donnees['img'].'" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-gray">
+            <strong class="d-block text-gray-dark">'.$donnees['name'].'</strong>'.$donnees['description'].'
+          </p>
+        </div>';
+      
+}
+echo'</div>';
+$reponse->closeCursor();
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+                
 <?php
 
  try
@@ -343,12 +390,6 @@ $reponse->closeCursor();
     ';
 
 ?>
-
-
-
-
-
-
 
 
 <?php
