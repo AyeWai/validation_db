@@ -27,12 +27,7 @@
         <label>
           <input type="checkbox" value="remember-me"> Se souvenir de moi
         </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block bg-success" type="submit">Se connecter</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
-    </form>
-
-    <?php 
+        <?php 
 
 try
 {
@@ -43,11 +38,37 @@ catch(Exception $e)
         die('Erreur : '.$e->getMessage());
 }
 
+
+
+
+
+if (isset($_POST['inputLogin'])){
+// Le mot de passe n'a pas été envoyé ou n'est pas bon
+
+
 $reponse = $bdd->query('SELECT pseudo, mdp FROM users WHERE users.capacity = 1');
 $donnees = $reponse->fetch();
 
-// Le mot de passe n'a pas été envoyé ou n'est pas bon
-if (($_POST['inputLogin'] != $donnees['pseudo']) OR ($_POST['inputPassword'] != $donnees['mdp']))
+$reponse2 = $bdd->prepare('SELECT pseudo, mdp, capacity FROM users WHERE pseudo = :u_pseudo AND mdp = :u_mdp');
+$reponse2->execute(array(
+  'u_pseudo' => $_POST['inputLogin'],
+  'u_mdp' => $_POST['inputPassword'],
+  ));
+$donnees2 = $reponse2->fetch();
+//$donnees2 = $reponse2;
+
+if (isset($donnees2) )
+{   
+    echo "reussite!";
+    $_SESSION['role'] = $donnees2['capacity'];
+    $_SESSION['pseudo'] = $donnees2['pseudo'];
+    $_SESSION['mdp'] = $donnees2['mdp'];
+    //header('Location: index.php'); // Afficher les codes secrets
+
+
+}
+
+else if (($_POST['inputLogin'] != $donnees['pseudo']) OR ($_POST['inputPassword'] != $donnees['mdp']))
 {
     echo "echec!";
     echo $_POST['inputLogin'];
@@ -57,10 +78,14 @@ if (($_POST['inputLogin'] != $donnees['pseudo']) OR ($_POST['inputPassword'] != 
     $_SESSION['role'] = 3;
     $_SESSION['prenom'] = 'Utilisateur';
     $_SESSION['nom'] = 'Temporaire';
+    echo '<div class="alert alert-danger" role="alert">
+      Identifiant et/ou mot de passe incorrect
+    </div>';
     //header('Location: index.php');
 }
+
 // Le mot de passe a été envoyé et il est bon
-else
+else if (($_POST['inputLogin'] == $donnees['pseudo']) OR ($_POST['inputPassword'] == $donnees['mdp']))
 {   
     echo "reussite!";
     header('Location: index.php'); // Afficher les codes secrets
@@ -70,7 +95,13 @@ else
 
 }
 
+}
 ?>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block bg-success" type="submit">Se connecter</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+    </form>
+
 
   </body>
 </html>

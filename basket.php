@@ -2,8 +2,8 @@
 
 session_start();
 echo "role" . $_SESSION['role']. "\n";
-echo "prenom" . $_SESSION['prenom']. "\n";
-echo "nom" . $_SESSION['nom']. "\n";
+echo "pseudo" . $_SESSION['pseudo']. "\n";
+echo "mdp" . $_SESSION['mdp']. "\n";
 
 		echo 'Grand test'.$_POST['ID'];
 
@@ -261,9 +261,12 @@ echo "nom" . $_SESSION['nom']. "\n";
                                             <li class="nav-item">
                                                 <a class="nav-link" href="basket.php">Panier                                                 </a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="moderation.php">Modération</a>
-                                            </li>
+                                            <?php if($_SESSION['role'] == 1){
+                                    echo '<li class="nav-item">';
+                                        echo '<a class="nav-link" href="moderation.php">Modération</a>';
+                                    echo '</li>';
+                                        }
+                                    ?>
                                         </ul>
                                     </div>
                                 </nav>
@@ -307,7 +310,7 @@ while ($donnees = $reponse->fetch())
               </tr>';
 }
 $reponse->closeCursor();
-$reponse2 = $bdd->query('SELECT total_quantity FROM total_basket');
+$reponse2 = $bdd->query('SELECT total_basket.total_quantity FROM total_basket');
 $donnees2 = $reponse2->fetch();    
 echo 
         '<tr>
@@ -320,7 +323,7 @@ echo
   </table>
 </div>';
 
-$reponse->closeCursor();
+$reponse2->closeCursor();
 
 ?>
 
