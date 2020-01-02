@@ -34,16 +34,30 @@
 
     <?php 
 
+try
+{
+	$bdd = new PDO('mysql:host=localhost;dbname=valid_db;charset=utf8', 'root', '');
+}
+catch(Exception $e)
+{       
+        die('Erreur : '.$e->getMessage());
+}
+
+$reponse = $bdd->query('SELECT pseudo, mdp FROM users WHERE users.capacity = 1');
+$donnees = $reponse->fetch();
+
 // Le mot de passe n'a pas été envoyé ou n'est pas bon
-if (($_POST['inputLogin'] !="admin") OR ($_POST['inputPassword'] != "1234"))
+if (($_POST['inputLogin'] != $donnees['pseudo']) OR ($_POST['inputPassword'] != $donnees['mdp']))
 {
     echo "echec!";
     echo $_POST['inputLogin'];
     echo $_POST['inputPassword'];
+    echo $donnees['pseudo'];
+    echo $donnees['mdp'];
     $_SESSION['role'] = 3;
     $_SESSION['prenom'] = 'Utilisateur';
     $_SESSION['nom'] = 'Temporaire';
-    header('Location: index.php');
+    //header('Location: index.php');
 }
 // Le mot de passe a été envoyé et il est bon
 else
@@ -57,10 +71,6 @@ else
 }
 
 ?>
-
-
-
-
 
   </body>
 </html>
