@@ -1,6 +1,6 @@
 # validation_db
 
-# Guide d'utilisation du site Commodiies Market
+# Guide d'utilisation du site Commodities Market
 
 Commodities Market est un site web à l'intention d'investisseurs ( particuliers comme institutionnels) dans les matières premières où ils peuvent acheter une certaine quantité de ces produits brut.
 
@@ -74,6 +74,8 @@ Le particulier ne peut que lire les articles dans la page d'accueil,, l'institut
 et l'admin a accès à toutes les pages dont la page de modération qui lui permet d'avoir un système CRUD total sur le site.
 
 Pour se connecter en tant qu'admin pour la première fois sur le site, il suffit de taper admin avec le mot de passe 1234. Si aucun identifiant n'est correct ou n'existe dans la base, l'utilisateur a un profil de particuliers par défaut.
+On peut rapidement tester les fonctionnalités accessibles aux institutionnel avec le pseudo rudy_972 avec le mot de passe poiuyt et celles accessibles aux particuliers avec le pseudo n.p avec le mot de passe 9876.
+Il y a bien sur d'autres identifiants utilisables, le tout visible dans la page de modération.
 
 
 ## Anomalies
@@ -85,6 +87,10 @@ De plus, pour tester ce développement, il faut désactiver les erreurs php, car
 Erratum 27/12/2019
 
 Les triggers fonctionnent, mais quand les instructions restent simples. Impossible d'implémenter une condition de style "IF ...THEN".
+
+Erratum 03/01/2029
+
+Tout fonctionne, excepté le système de panier, qui devrait être relié au bouton de chaque card Bootstrap de la page d'accueil pour récupérer la quantité souhaitée
 
 
 
