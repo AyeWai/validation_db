@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-echo "role" . $_SESSION['role']. "\n";
-echo "pseudo" . $_SESSION['pseudo']. "\n";
-echo "mdp" . $_SESSION['mdp']. "\n";
+//echo "role" . $_SESSION['role']. "\n";
+//echo "pseudo" . $_SESSION['pseudo']. "\n";
+//echo "mdp" . $_SESSION['mdp']. "\n";
 $_POST['inputLogin'] ="";
 
  ?>

@@ -1,13 +1,10 @@
 <?php 
 
 session_start();
-echo "role" . $_SESSION['role']. "\n";
-echo "pseudo" . $_SESSION['pseudo']. "\n";
-echo "mdp" . $_SESSION['mdp']. "\n";
+//echo "role" . $_SESSION['role']. "\n";
+//echo "pseudo" . $_SESSION['pseudo']. "\n";
+//echo "mdp" . $_SESSION['mdp']. "\n";
 
-		echo 'Grand test'.$_POST['ID'];
-
-		//Quand il y a beaucoup de texte, il est préférable d'afficher du code html qu'un echo
 		if(isset($_POST['ID']) && $_POST['Supprimer'] == true)
 		{
 			try
@@ -218,9 +215,9 @@ echo "mdp" . $_SESSION['mdp']. "\n";
             $req->closeCursor();
             echo('Succès de l\'ajout');
         }
-        else{
-            echo 'Echec modif';
-        } 
+        //else{
+            //echo 'Echec modif';
+        //} 
         foreach ($_POST as $key => $value) {
             $_POST[$key] = NULL;
          }

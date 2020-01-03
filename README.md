@@ -50,7 +50,6 @@ Selon les entrées de la table "produit" de la base de données et leur nombre, 
 Sur cette même page, l'utilisateur peut grâce à un système de bouton sélectionner la quantité de chaque article qu'ils désirent et qui seront affichés dans la page "Panier".
 
 La page "Se connecter" permet de s'indentifier comme un utilisateur particulier ou un admin. Une fois connecté, l'utilisateur admin a accès à l'intégralité du site dont la page "Modération" et l'utilisateur institutionnel (Etats et organisations d'Etats) accès aux articles sensibles tel que l'uranium .
-Dans la base de donnees, l'identifiant de base de l'admin est "admin" avec le mot de passe 1234.
     
 La page Panier fait la somme des articles sélectionnés par l'utilisateur selon le nombre d'articles sélectionné et leur prix.
 

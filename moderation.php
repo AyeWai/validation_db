@@ -1,13 +1,12 @@
 <?php 
 
 session_start();
-echo "role" . $_SESSION['role']. "\n";
-echo "prenom" . $_SESSION['prenom']. "\n";
-echo "nom" . $_SESSION['nom']. "\n";
+//echo "role" . $_SESSION['role']. "\n";
+//echo "prenom" . $_SESSION['prenom']. "\n";
+//echo "nom" . $_SESSION['nom']. "\n";
 
-		echo 'Grand test'.$_POST['ID'];
+		//echo 'Grand test'.$_POST['ID'];
 
-		//Quand il y a beaucoup de texte, il est préférable d'afficher du code html qu'un echo
 		if(isset($_POST['ID']) && $_POST['Supprimer'] == true)
 		{
 			try
@@ -19,13 +18,13 @@ echo "nom" . $_SESSION['nom']. "\n";
 					die('Erreur : '.$e->getMessage());
 			}
 			
-			echo $_POST['ID'];
-			echo $_POST['Supprimer'];
+			//echo $_POST['ID'];
+			//echo $_POST['Supprimer'];
 			$req = $bdd->prepare('DELETE FROM valid_db.users WHERE users.user_id =:u_id');
 			$req->execute(array(
 			'u_id' => $_POST['ID']
 			));
-            echo('Succès de la suppression');
+            //echo('Succès de la suppression');
             $req->closeCursor();
 		
         }
@@ -40,8 +39,8 @@ echo "nom" . $_SESSION['nom']. "\n";
 					die('Erreur : '.$e->getMessage());
 			}
 			
-			echo $_POST['ID'];
-			echo $_POST['Supprimer'];
+			//echo $_POST['ID'];
+			//echo $_POST['Supprimer'];
 			$req = $bdd->prepare('UPDATE valid_db.users SET users.fname =:u_fname , users.lname=:u_lname, users.capacity=:u_capacity WHERE users.user_id =:u_id');
 			$req->execute(array(
             'u_id' => $_POST['ID'],
@@ -50,7 +49,7 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_capacity' => $_POST['Role'],
             ));
             $req->closeCursor();
-			echo('Succès de la modification');
+			//echo('Succès de la modification');
 		
         }
         elseif(isset($_POST['ID']) && $_POST['Ajouter'] == true)
@@ -64,10 +63,10 @@ echo "nom" . $_SESSION['nom']. "\n";
 					die('Erreur : '.$e->getMessage());
 			}
 			
-			echo $_POST['ID'];
-            echo $_POST['Prenom'];
-            echo $_POST['Nom'];
-            echo $_POST['Role'];
+			//echo $_POST['ID'];
+            //echo $_POST['Prenom'];
+            //echo $_POST['Nom'];
+            //echo $_POST['Role'];
 			$req = $bdd->prepare('INSERT INTO valid_db.users (user_id, fname, lname, capacity) VALUES (:u_id, :u_fname , :u_lname, :u_capacity)');
 			$req->execute(array(
             'u_id' => $_POST['ID'],
@@ -76,7 +75,7 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_capacity' => $_POST['Role'],
             ));
             $req->closeCursor();
-			echo('Succès de l\'ajout');
+			//echo('Succès de l\'ajout');
 		
         }
         elseif(isset($_POST['P_ID']) && $_POST['P_Supprimer'] == true)
@@ -90,14 +89,14 @@ echo "nom" . $_SESSION['nom']. "\n";
 					die('Erreur : '.$e->getMessage());
 			}
 			
-			echo $_POST['P_ID'];
-			echo $_POST['P_Supprimer'];
+			//echo $_POST['P_ID'];
+			//echo $_POST['P_Supprimer'];
 			$req = $bdd->prepare('DELETE FROM valid_db.products WHERE products.product_id =:u_id');
 			$req->execute(array(
 			'u_id' => $_POST['P_ID']
             ));
             $req->closeCursor();
-			echo('Succès de la suppression');
+			//echo('Succès de la suppression');
 		
         }
         elseif(isset($_POST['P_ID']) && $_POST['P_Modifier'] == true)
@@ -111,8 +110,8 @@ echo "nom" . $_SESSION['nom']. "\n";
 					die('Erreur : '.$e->getMessage());
 			}
 			
-			echo $_POST['P_ID'];
-			echo $_POST['P_Supprimer'];
+			//echo $_POST['P_ID'];
+			//echo $_POST['P_Supprimer'];
 			$req = $bdd->prepare('UPDATE valid_db.products SET products.product_id =:u_id , products.name=:u_name, products.description=:u_description, products.create_date=:u_create_date, products.price=:u_price, products.img=:u_img WHERE products.product_id =:u_id');
             $t=time();
             $c_date =(date("Y/m/d H:i:s",$t));
@@ -125,7 +124,7 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_img' => $_POST['P_Image'],
             ));
             $req->closeCursor();
-			echo('Succès de la modification');
+			//echo('Succès de la modification');
 		
         }
         elseif(isset($_POST['P_ID']) && $_POST['P_Ajouter'] == true)
@@ -139,10 +138,10 @@ echo "nom" . $_SESSION['nom']. "\n";
 					die('Erreur : '.$e->getMessage());
 			}
 			
-			echo $_POST['ID'];
-            echo $_POST['Prenom'];
-            echo $_POST['Nom'];
-            echo $_POST['Role'];
+			//echo $_POST['ID'];
+            //echo $_POST['Prenom'];
+            //echo $_POST['Nom'];
+            //echo $_POST['Role'];
 			$req = $bdd->prepare('INSERT INTO valid_db.products (product_id, name, create_date, description, price, img) VALUES (:u_id, :u_name , CURRENT_TIMESTAMP(), :u_description, :u_price, :u_img)');
 			$req->execute(array(
             'u_id' => $_POST['P_ID'],
@@ -153,7 +152,7 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_img' => $_POST['P_Image'],
             ));
             $req->closeCursor();
-			echo('Succès de l\'ajout');
+			//echo('Succès de l\'ajout');
 		
         }
         elseif(isset($_POST['U_ID']) && $_POST['U_Supprimer'] == true)
@@ -172,7 +171,7 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_id' => $_POST['U_ID'],
             ));
             $req->closeCursor();
-			echo('Succès de la suppression');
+			//echo('Succès de la suppression');
 		
         }
         elseif(isset($_POST['U_ID']) && $_POST['U_Modifier'] == true)
@@ -193,7 +192,7 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_mdp' => $_POST['U_Mdp'],
             ));
             $req->closeCursor();
-			echo('Succès de la modification');
+			//echo('Succès de la modification');
 		
         }
         elseif(isset($_POST['U_ID']) && $_POST['U_Ajouter'] == true)
@@ -206,9 +205,9 @@ echo "nom" . $_SESSION['nom']. "\n";
 			{       
 					die('Erreur : '.$e->getMessage());
 			}
-            echo $_POST['U_ID'];
-            echo $_POST['U_Identifiant'];
-            echo $_POST['U_Mdp'];
+            //echo $_POST['U_ID'];
+            //echo $_POST['U_Identifiant'];
+            //echo $_POST['U_Mdp'];
 			$req = $bdd->prepare('INSERT INTO valid_db.users (user_id, pseudo, mdp) VALUES (:u_id, :u_pseudo, :u_mdp)');
 			$req->execute(array(
             'u_id' => $_POST['U_ID'],
@@ -216,11 +215,11 @@ echo "nom" . $_SESSION['nom']. "\n";
             'u_mdp' => $_POST['U_Mdp'],
             ));
             $req->closeCursor();
-            echo('Succès de l\'ajout');
+            //echo('Succès de l\'ajout');
         }
-        else{
-            echo 'Echec modif';
-        } 
+        //else{
+        //    echo 'Echec modif';
+        //} 
         foreach ($_POST as $key => $value) {
             $_POST[$key] = NULL;
          }
@@ -305,17 +304,6 @@ echo'</div>';
 $reponse->closeCursor();
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
                 
 <?php
 
@@ -469,13 +457,6 @@ $reponse->closeCursor();
     ';
 
 ?>
-
-
-
-
-
-
-
 
 <?php
 

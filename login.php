@@ -38,13 +38,7 @@ catch(Exception $e)
         die('Erreur : '.$e->getMessage());
 }
 
-
-
-
-
 if (isset($_POST['inputLogin'])){
-// Le mot de passe n'a pas été envoyé ou n'est pas bon
-
 
 $reponse = $bdd->query('SELECT pseudo, mdp FROM users WHERE users.capacity = 1');
 $donnees = $reponse->fetch();
@@ -55,26 +49,16 @@ $reponse2->execute(array(
   'u_mdp' => $_POST['inputPassword'],
   ));
 $donnees2 = $reponse2->fetch();
-//$donnees2 = $reponse2;
-
-if (isset($donnees2) )
-{   
-    echo "reussite!";
-    $_SESSION['role'] = $donnees2['capacity'];
-    $_SESSION['pseudo'] = $donnees2['pseudo'];
-    $_SESSION['mdp'] = $donnees2['mdp'];
-    //header('Location: index.php'); // Afficher les codes secrets
 
 
-}
 
-else if (($_POST['inputLogin'] != $donnees['pseudo']) OR ($_POST['inputPassword'] != $donnees['mdp']))
+if (($_POST['inputLogin'] != $donnees2['pseudo']) OR ($_POST['inputPassword'] != $donnees2['mdp']))
 {
-    echo "echec!";
-    echo $_POST['inputLogin'];
-    echo $_POST['inputPassword'];
-    echo $donnees['pseudo'];
-    echo $donnees['mdp'];
+    //echo "echec!";
+    //echo $_POST['inputLogin'];
+    //echo $_POST['inputPassword'];
+    //echo $donnees['pseudo'];
+    //echo $donnees['mdp'];
     $_SESSION['role'] = 3;
     $_SESSION['prenom'] = 'Utilisateur';
     $_SESSION['nom'] = 'Temporaire';
@@ -82,17 +66,26 @@ else if (($_POST['inputLogin'] != $donnees['pseudo']) OR ($_POST['inputPassword'
       Identifiant et/ou mot de passe incorrect
     </div>';
     //header('Location: index.php');
+    $reponse->closeCursor();
 }
+else if (isset($donnees2) )
+{   
+    //echo "reussite!";
+    $_SESSION['role'] = $donnees2['capacity'];
+    $_SESSION['pseudo'] = $donnees2['pseudo'];
+    $_SESSION['mdp'] = $donnees2['mdp'];
+    $reponse2->closeCursor();
+    header('Location: index.php');
 
-// Le mot de passe a été envoyé et il est bon
+
+}
 else if (($_POST['inputLogin'] == $donnees['pseudo']) OR ($_POST['inputPassword'] == $donnees['mdp']))
 {   
-    echo "reussite!";
-    header('Location: index.php'); // Afficher les codes secrets
+    //echo "reussite!";
+    header('Location: index.php'); 
     $_SESSION['role'] = 1;
-    $_SESSION['prenom'] = 'Chris';
-    $_SESSION['nom'] = 'SIMON';
-
+    $reponse->closeCursor();
+    header('Location: index.php');
 }
 
 }
