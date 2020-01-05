@@ -290,8 +290,8 @@ echo '<div class="row">
           <tr>
               <th scope="col">ID</th>
               <th scope="col">Nom</th>
-              <th scope="col">Prix</th>
               <th scope="col">Quantité</th>
+              <th scope="col">Prix</th>
           </tr>
       </thead>
       <tbody>';
@@ -302,19 +302,19 @@ while ($donnees = $reponse->fetch())
     echo '    <tr>
               <th scope="row">'.$donnees['product_id'].'</th>
               <td>'.$donnees['name'].'</td>
-              <td>'.$donnees['price'].'</td>
               <td>'.$donnees['quantity'].'</td>
+              <td>'.$donnees['price'].'</td>
               </tr>';
 }
 $reponse->closeCursor();
-$reponse2 = $bdd->query('SELECT total_basket.total_quantity FROM total_basket');
+$reponse2 = $bdd->query('SELECT sumtotbask.total_price FROM sumtotbask');
 $donnees2 = $reponse2->fetch();    
 echo 
         '<tr>
             <th scope="row">Total</th>
-            <td>dfg</td>
-            <td>'.$donnees2['total_quantity'].'</td>
-            <td>hfgh</td>
+            <td></td>
+            <td></td>
+            <td>'.$donnees2['total_price'].'</td>
         </tr>
       </tbody>
   </table>

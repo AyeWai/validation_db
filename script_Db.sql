@@ -35,10 +35,9 @@ create table valid_db.basket (
     basket_id int,
     quantity int,
     primary key(basket_id),
-    constraint fk_basket1 foreign key(product_id) references products(product_id),
-    constraint fk_basket2 foreign key(user_id) references users(user_id)
+    constraint fk_basket1 foreign key(product_id) references products(product_id)
     );
-
+    /*constraint fk_basket2 foreign key(user_id) references users(user_id)*/
 create table valid_db.total_basket (
     total_quantity int
     );
@@ -63,6 +62,7 @@ insert into valid_db.users (user_id, pseudo, mdp, fname, lname, capacity) values
 
 
 insert into valid_db.basket (user_id, product_id, basket_id, quantity) values (2, 1, 1, 4);
+insert into valid_db.basket (user_id, product_id, basket_id, quantity) values (2, 3, 2, 6);
 
 /*SELECTION DES PRODUITS DANS LES TABLES*/
 
@@ -72,4 +72,4 @@ select * from valid_db.basket;
 
 
 CREATE TRIGGER `totquantity` AFTER INSERT ON `basket` FOR EACH ROW INSERT INTO valid_db.total_basket SELECT (basket.quantity * products.price) FROM basket, products WHERE basket.product_id = products.product_id;
-
+CREATE VIEW valid_db.sumtotbask AS SELECT SUM(total_quantity) AS total_price FROM valid_db.total_basket;
