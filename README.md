@@ -90,7 +90,7 @@ Les triggers fonctionnent, mais quand les instructions restent simples. Impossib
 
 Erratum 03/01/2029
 
-Tout fonctionne, excepté le système de panier, qui devrait être relié au bouton de chaque card Bootstrap de la page d'accueil pour récupérer la quantité souhaitée
+Tout fonctionne, excepté le système de panier, qui devrait être relié au bouton de chaque card Bootstrap de la page d'accueil pour récupérer la quantité souhaitée. On peut le tester en ajoutant les articles directement dans la base de données sous PhpMyAdmin
 
 
 
